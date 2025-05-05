@@ -1,0 +1,82 @@
+// .row.gutters-20 {
+//     padding-left: 5px;
+//     padding-right: 5px;
+// }
+
+// .row {
+//     display: -ms-flexbox;
+//     display: flex;
+//     -ms-flex-wrap: wrap;
+//     flex-wrap: wrap;
+//     margin-right: -15px;
+//     margin-left: -15px;
+// }
+
+// .dashboard-summery-one {
+//     margin-bottom: 30px;
+//     background-color: #ffffff;
+//     padding: 8px 28px;
+//     border-radius: 4px;
+//     height: 570px;
+//     box-shadow: 0px 10px 20px 0px rgba(229, 229, 229, 0.75);
+// }
+
+// .dashboard-summery-one .item-icon {
+//     position: relative;
+//     height: 85px;
+//     width: 85px;
+//     line-height: 85px;
+//     border-radius: 50%;
+//     text-align: center;
+// }
+
+// .text-green {
+//     color: #3cb878;
+//     position: absolute;
+//     content: '';
+//     top: 22%;
+//     left: 22%;
+// }
+// .bg-light-green {
+//     background-color: #d1f3e0;
+//     position: relative;
+// }
+
+//   .item-title{
+//     color: #a8a8a8;
+//     margin-bottom: 2px;
+//   }
+
+//   .bg-light-red {
+//     background-color: #ffeaea;
+// }
+//   .dashboard-summery-one .item-content .item-number {
+//     font-size: 20px;
+//     font-weight: 500;
+//     color: #1b1a1a;
+// }
+
+.card-body {
+
+    padding: 0rem !important;
+  }
+/* Chart Container */
+.dashboard-summery-one {
+    margin-top: 30px;
+    height: 700px;  /* Make sure the container has enough space */
+    width: 100%;    /* Take full width available */
+  }
+  
+  /* Container for the chart */
+  .apx-chart {
+    position: relative;
+    height: 100%;
+    width: 100%;  /* Set width to 100% of the parent container */
+  }
+  
+  /* Ensuring chart takes more space */
+  #chart {
+    width: 100% !important;  /* Force chart to take full width */
+    height: 600px !important; /* Force chart height to 600px */
+  }
+  

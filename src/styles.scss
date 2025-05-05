@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/style.scss";
+// Replace above style with this css file to enable RTL styles
+// @import "./assets/css/style.rtl";
+@import './assets/sass/plugins.scss';
+// @import "./assets/css/style.rtl.css";
+@import "./assets/sass/style.angular.scss";
+
+// Keenicons - High quality and pixel perfect font icons available in 3 styles, duotone, outline and solid for Metronic elements
+// @import "./assets/plugins/keenicons/duotone/style.css";
+// @import "./assets/plugins/keenicons/outline/style.css";
+// @import "./assets/plugins/keenicons/solid/style.css";
+
+@import './assets/scss/buttons.scss';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+
+
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+nz-select {
+  width: 100% !important;
+}
+
+
+.card-padding{
+  padding: 25px;
+}
+
+
+.card-table-padding{
+  padding: 10px;
+
+}
+
+
+
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #e06506 !important;
+  border-color: #e06506 !important;
+}
+
+
+.ant-picker {
+width: 100% !important;
+}
+
+
+
+.card-padding-exception{
+  padding: 5px;
+}
+.ant-switch-checked {
+  background: #2C9F1C !important;
+}
+
+
+
+.ant-upload.ant-upload-drag p.ant-upload-text {
+  margin: 0 0 4px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 12px !important;
+}
+
+
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
+  color: #40a9 !important;
+  font-size: 30px !important;
+}
+
+
+

@@ -1,0 +1,368 @@
+<form nz-form [formGroup]="validateForm">
+    <div class="card card-padding">
+      <div class="row">
+        <div class="col-lg"
+        >
+          <label>Group Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Group required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="GROUP_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a group"
+                >
+                  <nz-option *ngFor="let item of groupList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div
+        class="col-lg"
+        >
+          <label>Class Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Class required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="CLASS_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a class"
+                  (ngModelChange)="onSelectedClass($event)"
+                >
+                <nz-option *ngFor="let item of classList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+  
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div
+        class="col-lg"
+          *ngIf="isVersionVisible == true">
+          <label>Version Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Version required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="VERSION_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a version"
+                >
+                <nz-option *ngFor="let item of versionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+  
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div
+        class="col-lg"
+        >
+          <label>Session Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Session required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="START_SESSION_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a session"
+                >
+                <nz-option *ngFor="let item of sessionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+  
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div
+        class="col-lg"
+          *ngIf="isYearVisible == true">
+          <label>Year Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Year required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="YEAR_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a year"
+                >
+                <nz-option *ngFor="let item of yearList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+  
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div
+        class="col-lg"
+          *ngIf="isSemesterVisible == true">
+          <label>Semester Name<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Semester required!">
+              <nz-input-group>
+                <nz-select
+                  formControlName="SEMESTER_NAME"
+                  nzShowSearch
+                  nzAllowClear
+                  nzPlaceHolder="Select a semester"
+                >
+                <nz-option *ngFor="let item of semesterList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+  
+                </nz-select>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+      </div>
+      <div class="col-lg-3">
+        <button
+        type="button"
+        class="button-search"
+        nz-button
+        nzType="primary"
+        (click)="search()"
+        [nzLoading]="isSearchLoading"
+      >
+        Search
+      </button>
+      </div>
+    </div>
+  <br>
+    <div class="card card-padding">
+      <div class="button-right">
+        <div>
+          <button class="button-add" nz-button nzShape="round" nzType="primary" nzSize="default" (click)="Add()">Add</button>
+        </div>
+      </div>
+      <div style="margin-top: 10px; margin-bottom: 15px;">
+        <div *ngIf="isSkeletonShow">
+          <nz-skeleton  [nzActive]="true" [nzParagraph]="{ rows: 5 }"></nz-skeleton>
+        </div>
+        <div *ngIf="!isSkeletonShow">
+        <nz-table #basicTable nzTableLayout="fixed" [nzData]="gradeFormArray.value"
+             nzSize="small" nzShowPagination="false" nzBordered  nzResponsive>
+      <thead>
+        <tr>
+          <th style="width: 50px;">No</th>
+          <th style="width: 180px;">From Value</th>
+          <th style="width: 180px;">Upto value</th>
+          <th style="width: 180px;">Letter Grade</th>
+          <th style="width: 180px;">Grade Point</th>
+          <th >Remarks</th>
+          <th style="width: 100px;text-align: center;">Action</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="gradeFormArray">
+        <tr *ngFor="let row of gradeFormArray.controls; let i=index" [formGroupName]="i">
+          <td>{{i+1}}</td>
+          <td>
+            <input nz-input formControlName="FROM_VALUE" (keypress)="alphaNumberOnly($event)"
+            (paste)="onPaste($event)"/>
+          </td>
+          <td>
+            <input nz-input formControlName="UPTO_VALUE"(keypress)="alphaNumberOnly($event)"
+            (paste)="onPaste($event)"/>
+          </td>
+          <td>
+            <input nz-input formControlName="LETTER_GRADE"  (keypress)="alphaOnly($event)"
+            (paste)="onPaste($event)"/>
+          </td>
+          <td>
+            <input nz-input formControlName="GRADE_POINT"  (keypress)="numberOnly($event)"
+            (paste)="onPaste($event)"/>
+          </td>
+          <td>
+            <input nz-input formControlName="REMARKS"/>
+          </td>
+         
+         
+          <td style="text-align: center;">
+            <a>
+              <button class="button-delete" nz-button nzShape="round" nzSize="small" nzType="primary"
+              (click)="delete(i)">Delete</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+      </div>
+      <div class="col-lg-3">
+        <button
+        type="button"
+        class="button-save"
+        nz-button
+        nzType="primary"
+        (click)="prepareSave()"
+        [nzLoading]="isSaveLoading"
+      >
+        Save
+      </button>
+      </div>
+    
+    </div>
+  </form>
+  <br>
+  <form nz-form [formGroup]="validateFormCopy" *ngIf="Showcopyform">
+  <div class="card card-padding">
+    <p style="font-weight: 600;">*If you want copy for  another class</p>
+    <div class="row">
+      <div class="col-lg"
+      >
+        <label>Group Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Group required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="GROUP_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a group"
+              >
+                <nz-option *ngFor="let item of groupList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+      class="col-lg"
+      >
+        <label>Class Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Class required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="CLASS_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a class"
+                (ngModelChange)="onSelectedClassCopy($event)"
+              >
+              <nz-option *ngFor="let item of classList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div
+      class="col-lg"
+        *ngIf="isVersionVisible == true">
+        <label>Version Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Version required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="VERSION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a version"
+              >
+              <nz-option *ngFor="let item of versionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+      class="col-lg"
+      >
+        <label>Session Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Session required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="START_SESSION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a session"
+              >
+              <nz-option *ngFor="let item of sessionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div
+      class="col-lg"
+        *ngIf="isYearVisible == true">
+        <label>Year Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Year required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="YEAR_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a year"
+              >
+              <nz-option *ngFor="let item of yearList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+      class="col-lg"
+        *ngIf="isSemesterVisible == true">
+        <label>Semester Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Semester required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="SEMESTER_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a semester"
+              >
+              <nz-option *ngFor="let item of semesterList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </div>
+    <div class="col-lg-3">
+      <button
+      type="button"
+      class="button-save"
+      nz-button
+      nzType="primary"
+      (click)="preperCopyFrom()"
+      [nzLoading]="isSaveLoadingCopy"
+    >
+    Save Copy From
+    </button>
+    </div>
+  </div>
+</form>

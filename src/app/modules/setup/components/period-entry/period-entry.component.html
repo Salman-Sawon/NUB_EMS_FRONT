@@ -1,0 +1,87 @@
+
+<form [formGroup]="ValidateForm">
+    <div class="row mb-5">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label >Search</label>
+        <div>
+          <input
+            formControlName="SEARCH"
+            nz-input
+            placeholder="Search here"
+            nzSize="default"
+            (keyup)="onSearchInputChange($event)"
+          />
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <button
+          nz-button
+          nzType="primary"
+          type="button"
+          style="margin-top: 20px;"
+          nzDanger
+          nzSize="default"
+           class="button-report"
+          (click)="reportData()"
+        >
+        Report
+        </button>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <br>
+        <div class="button-right">
+          <div>
+            <button class="button-add" nz-button nzShape="round" nzType="primary" (click)="addEditPeriod('Add',[])">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <nz-table
+      #sortTable
+      [nzData]="PeriodList"
+      nzTableLayout="fixed"
+      nzSize="small"
+      nzBordered nzResponsive
+    >
+      <thead>
+        <tr>
+          <th
+            *ngFor="let column of listOfColumn"
+            [nzSortFn]="column.compare"
+            [nzSortPriority]="column.priority"
+            [style.width.px]="column.width"
+            [ngStyle]="{'text-align': column.title === 'Action' ? 'center' : 'left'}"
+          >
+            {{ column.title }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of sortTable.data; let i = index">
+            <td class="text-center">{{ i + 1 }}</td>
+          <td>{{ data.PERIOD_NAME }}</td>
+          <td>{{ data.START_TIME }}</td>
+          <td>{{ data.END_TIME }}</td>
+          <td>{{ data.DURATION }}</td>
+          <td class="text-center">
+            <ng-container >
+            <a>
+              <button class="button-edit" nz-button nzShape="round"
+              (click)="addEditPeriod('Update',data)"
+              nzSize="small" nzType="primary">Edit</button>
+            </a>
+            <nz-divider nzType="vertical"></nz-divider>
+          </ng-container>
+          <ng-container >
+            <a>
+              <button class="button-delete" nz-button nzShape="round" nzSize="small" nzType="primary"
+              (click)="deleteItem(data)">Delete</button>
+            </a>
+          </ng-container>
+        </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </form>
+  

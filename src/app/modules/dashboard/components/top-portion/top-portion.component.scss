@@ -1,0 +1,104 @@
+.row.gutters-20 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.dashboard-summery-one {
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 22px 28px;
+  border-radius: 4px;
+  box-shadow: 0px 10px 20px 0px rgba(229, 229, 229, 0.75);
+}
+
+.dashboard-summery-one .item-icon {
+  position: relative;
+  height: 85px;
+  width: 85px;
+  line-height: 85px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.text-green {
+  color: #3cb878;
+  position: absolute;
+  content: '';
+  top: 22%;
+  left: 22%;
+}
+.bg-light-green {
+  background-color: #d1f3e0;
+  position: relative;
+}
+
+
+.flaticon-classmates {
+  background-image: url('../../../../../assets/Icons/images/students.png'); /* Replace 'your-icon.svg' with your actual icon file */
+  background-size: contain; /* Adjust this based on your icon size and layout needs */
+  width: 52px; /* Set the desired width for your icon */
+  height: 52px; /* Set the desired height for your icon */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.flaticon-teachers {
+  background-image: url('../../../../../assets/icons/images/teachers.png'); /* Replace 'your-icon.svg' with your actual icon file */
+  background-size: contain; /* Adjust this based on your icon size and layout needs */
+  width: 52px; /* Set the desired width for your icon */
+  height: 52px; /* Set the desired height for your icon */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.flaticon-staff {
+  background-image: url('../../../../../assets/icons/images/users.png'); /* Replace 'your-icon.svg' with your actual icon file */
+  background-size: contain; /* Adjust this based on your icon size and layout needs */
+  width: 52px; /* Set the desired width for your icon */
+  height: 52px; /* Set the desired height for your icon */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.flaticon-income {
+  background-image: url('../../../../../assets/icons/images/money.png'); /* Replace 'your-icon.svg' with your actual icon file */
+  background-size: contain; /* Adjust this based on your icon size and layout needs */
+  width: 52px; /* Set the desired width for your icon */
+  height: 52px; /* Set the desired height for your icon */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+.item-title{
+  color: #a8a8a8;
+  margin-bottom: 2px;
+}
+
+.bg-light-red {
+  background-color: #ffeaea;
+}
+.dashboard-summery-one .item-content .item-number {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1b1a1a;
+}
+
+.bg-light-blue {
+  background-color: #e1f1ff;
+}
+
+.bg-light-yellow {
+  background-color: #fff2d8;
+}

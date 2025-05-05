@@ -1,0 +1,331 @@
+<form nz-form [formGroup]="validateForm">
+  <div class="card card-padding">
+    <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+      >
+        <label>Group Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Group required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="GROUP_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a group"
+              >
+                <nz-option *ngFor="let item of groupList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+      >
+        <label>Class Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Class required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="CLASS_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a class"
+                (ngModelChange)="onSelectedClass($event)"
+              >
+              <nz-option *ngFor="let item of classList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+        *ngIf="isSectionVisible == true">
+        <label>Section Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Section required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="SECTION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a section"
+              >
+              <nz-option *ngFor="let item of sectionlist" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+        *ngIf="isVersionVisible == true">
+        <label>Version Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Version required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="VERSION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a version"
+              >
+              <nz-option *ngFor="let item of versionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+      >
+        <label>Start Session Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Start Session required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="START_SESSION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a session"
+              >
+              <nz-option *ngFor="let item of sessionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+      >
+        <label>Current Session Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Cur session required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="CURRENT_SESSION_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a session"
+              >
+              <nz-option *ngFor="let item of sessionList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+        *ngIf="isYearVisible == true">
+        <label>Year Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Year required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="YEAR_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a year"
+              >
+              <nz-option *ngFor="let item of yearList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+        *ngIf="isSemesterVisible == true">
+        <label>Semester Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Semester required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="SEMESTER_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a semester"
+              >
+              <nz-option *ngFor="let item of semesterList" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div
+        nz-col
+        [nzSpan]="24"
+        [nzXs]="{ span: 24 }"
+        [nzSm]="{ span: 24 }"
+        [nzMd]="{ span: 4 }"
+        [nzLg]="{ span: 4 }"
+      >
+        <label>Shift Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Shift required!">
+            <nz-input-group>
+              <nz-select
+                formControlName="SHIFT_NAME"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a shift"
+              >
+              <nz-option *ngFor="let item of shiftlist" [nzLabel]="item.NAME" [nzValue]="item.CODE"></nz-option>
+
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row mb-5">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label >Search</label>
+        <div>
+          <input
+            nz-input
+            placeholder="Search here"
+            nzSize="default"
+            (keyup)="onSearchInputChange($event)"
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <br>
+        <div class="button-right">
+          <div>
+            <button class="button-add" nz-button nzShape="round" nzType="primary" nzSize="default" (click)="Add()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div>
+  <nz-table #basicTable nzTableLayout="fixed" [nzData]="bulkEntryFormArray.value"
+  nzSize="small" nzShowPagination="false" nzBordered  nzResponsive>
+    <thead>
+      <tr>
+        <th style="width: 50px;">No</th>
+        <th>Student Name</th>
+        <th style="width: 250px;">Father's Name</th>
+        <th style="width: 100px;">Class Roll</th>
+        <th style="width: 200px;">SMS Mobile Number</th>
+        <th style="width: 150px;">Admission Date</th>
+        <th style="width: 100px;text-align: center;">Action</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="bulkEntryFormArray">
+      <tr *ngFor="let row of bulkEntryFormArray.controls; let i=index" [formGroupName]="i">
+        <td>{{i+1}}</td>
+        <td>
+          <input nz-input formControlName="STUDENT_NAME"
+          (keyup)="clear()"/>
+        </td>
+        <td>
+          <input nz-input formControlName="FATHERS_NAME"
+          (keyup)="clear()"/>
+        </td>
+        <td>
+          <input nz-input formControlName="CLASS_ROLL"
+          (keypress)="numberOnly($event)"(keyup)="clear()"/>
+        </td>
+        <td>
+          <input nz-input  formControlName="SMS_MOBILE_NUM"
+          (keypress)="numberOnly($event)"
+          maxlength="11"
+          (keyup)="clear()"
+          />
+        </td>
+        <td>
+          <nz-date-picker formControlName="ADMISSION_DATE" nzFormat="dd/MM/yyyy"
+          (keyup)="clear()"></nz-date-picker>
+        </td>
+        <td style="text-align: center;">
+          <a>
+            <button class="button-delete" nz-button nzShape="round" nzSize="small" nzType="primary"
+            (click)="delete(i)">Delete</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+<div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" style="margin-top: 30px;">
+  <div nz-col [nzSpan]="4" [nzXs]="{ span: 4 }" [nzSm]="{ span: 4 }" [nzMd]="{ span: 4 }" [nzLg]="{ span: 4 }">
+    <button class="modal-button-save" nz-button nzType="primary" (click)="prepareSaveBulkEntry()"
+    [nzLoading]="isSaveLoading">Save</button>
+  </div>
+</div>
+  </div>
+</form>

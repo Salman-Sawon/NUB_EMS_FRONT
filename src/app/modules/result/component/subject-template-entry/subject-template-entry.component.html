@@ -1,0 +1,228 @@
+
+<div class="container">
+    
+    <form nz-form [formGroup]="SubjectTempForm">
+
+<div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 10 }" [nzMd]="{ span: 10 }" [nzLg]="{ span: 10 }">
+        <label>All Subject Templates</label>
+      <div>
+        <nz-select nzAllowClear 
+        formControlName="SUBJECT_TEMPLATE_ID"
+        (ngModelChange)="selectSubjectTemplate($event)"
+        
+          nzPlaceHolder="Select Subject Template" 
+          [nzCustomTemplate]="defaultTemplate" nzSize="default">
+          <nz-option *ngFor="let item of subjecTemptList" [nzLabel]="item.COURSE_OUTLINE_TEMPLATE_DESC" [nzValue]="item.SUBJECT_TEMPLATE_ID"></nz-option>
+        </nz-select>
+        <ng-template #defaultTemplate let-selected>
+          {{ selected.nzLabel }}
+        </ng-template>
+        
+      </div>
+    </div>
+
+    <div nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 10 }" [nzMd]="{ span: 10 }" [nzLg]="{ span: 10 }">
+        <label>Course Template Name</label>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter Subject template name!">
+              <nz-input-group nzSize="default">
+                <input nz-input placeholder="Enter Course Template Name"
+                formControlName="SUBJECT_TEMPLATE_NAME"                                  
+                />
+              </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+       
+
+    </div>
+    <div nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 4 }" [nzMd]="{ span: 4 }" [nzLg]="{ span: 4 }">
+     <br>
+   
+      <button class="margintop"
+                nz-button
+                nzType="primary"
+                [nzLoading]="isSaveLoading"
+                type="button"
+                nzDanger
+                nzSize="default"
+                class="button-save"
+                (click)="Save()"
+          
+              >
+             {{templatebtn}}
+              </button>
+  </div>
+ 
+
+</div>
+
+
+
+<div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+    <div class="admission-card-one" nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 8 }" [nzLg]="{ span: 8 }">
+      <div class="card card-padding">
+        <div style="height: 700px; overflow-y: auto" >
+      <label class="custom-label">Search</label>
+        <div>
+        <input
+          formControlName="SEARCH_1"
+          nz-input
+          placeholder="search here"
+          nzSize="default"
+          (keyup)="onSearchSubjectCompusary($event)"
+        />
+    </div>
+    <nz-table
+    #basicTable
+    [nzData]="SubjectListCompusary"
+    nzSize="small"
+    nzShowPagination="false" nzBordered  nzResponsive
+    (nzCurrentPageDataChange)="onCurrentPageDataChangeCompusary($event)"
+  >
+    <thead>
+      <tr>
+        <th style="text-align: left !important;"
+          [nzSelections]="listOfSelectionCompusary"
+          [(nzChecked)]="checkedCompusary"
+          [nzDisabled]="checkboxDisableCompusary"
+          [nzIndeterminate]="indeterminateCompusary"
+          (nzCheckedChange)="onAllCheckedCompusary($event)"
+        ></th>
+        <th> Compulsory Subjects </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of SubjectListCompusary; let i = index">
+        <td style="text-align: left !important;"
+          [nzChecked]="setOfCheckedIdCompusary.has(data.SUBJECT_CODE)"
+          (nzCheckedChange)="onItemCheckedCompusary(data.SUBJECT_CODE, $event)"
+        ></td>
+        <td>{{data.SUBJECT_NAME }} -({{data.SUBJECT_CODE }})    </td>
+       
+      </tr>
+    </tbody>
+  </nz-table>
+
+       
+      
+    </div>
+    </div>
+    </div>
+<br>
+    <div class="admission-card-one" nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 8 }" [nzLg]="{ span: 8 }">
+      <div class="card card-padding">
+        <div style="height: 700px; overflow-y: auto" >
+      <label class="custom-label">Search</label>
+        <div>
+        <input
+          formControlName="SEARCH_2"
+          nz-input
+          placeholder="search here"
+          nzSize="default"
+          (keyup)="onSearchSubjectThird($event)"
+        />
+    </div>
+
+    <nz-table
+    #basicTable
+   
+    nzSize="small"
+    nzShowPagination="false" nzBordered  nzResponsive
+    [nzData]="SubjectListThird"
+    (nzCurrentPageDataChange)="onCurrentPageDataChangeThird($event)"
+  >
+    <thead>
+      <tr>
+        <th style="text-align: left !important;"
+        [(nzChecked)]="checkedThird"
+        [nzSelections]="listOfSelectionThird"
+          [nzDisabled]="checkboxDisableThird"
+          [nzIndeterminate]="indeterminateThird"
+          (nzCheckedChange)="onAllCheckedThird($event)"
+        ></th>
+        <th> Third Subjects </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of SubjectListThird; let i = index">
+        <td style="text-align: left !important;"
+          [nzChecked]="setOfCheckedIdThird.has(data.SUBJECT_CODE)"
+          (nzCheckedChange)="onItemCheckedThird(data.SUBJECT_CODE, $event)"
+        ></td>
+        <td>{{data.SUBJECT_NAME }} -({{data.SUBJECT_CODE }})    </td>
+       
+      </tr>
+    </tbody>
+  </nz-table>
+
+
+
+
+    </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="admission-card-one" nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 24 }" [nzMd]="{ span: 8 }" [nzLg]="{ span: 8 }" >
+      <div class="card card-padding">
+        <div style="height: 700px; overflow-y: auto" >
+      <label class="custom-label">Search</label>
+        <div>
+        <input
+          formControlName="SEARCH_3"
+          nz-input
+          placeholder="search here"
+          nzSize="default"
+          (keyup)="onSearchSubjectFourth($event)"
+        />
+    </div>
+    <nz-table
+    #basicTable
+   
+    nzSize="small"
+    nzShowPagination="false" nzBordered  nzResponsive
+    [nzData]="SubjectListFourth"
+    (nzCurrentPageDataChange)="onCurrentPageDataChangeFourth($event)"
+  >
+  
+    <thead>
+      <tr>
+        <th style="text-align: left !important;"
+          [nzSelections]="listOfSelectionFourth"
+          [(nzChecked)]="checkedFourth"
+          [nzDisabled]="checkboxDisableFourth"
+          [nzIndeterminate]="indeterminateFourth"
+          (nzCheckedChange)="onAllCheckedFourth($event)"
+        ></th>
+        <th> Fourth Subjects </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of SubjectListFourth; let i = index">
+        <td style="text-align: left !important;"
+          [nzChecked]="setOfCheckedIdFourth.has(data.SUBJECT_CODE)"
+          (nzCheckedChange)="onItemCheckedFourth(data.SUBJECT_CODE, $event)"
+        ></td>
+        <td>{{data.SUBJECT_NAME }} -({{data.SUBJECT_CODE }})    </td>
+       
+      </tr>
+    </tbody>
+  </nz-table>
+
+
+
+    </div>
+    </div>
+    </div>
+
+</div>
+
+
+<br>
+
+</form>
+</div>

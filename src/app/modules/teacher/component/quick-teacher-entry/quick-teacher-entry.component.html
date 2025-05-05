@@ -1,0 +1,114 @@
+<form nz-form [formGroup]="validateForm">
+    <div class="card card-padding">
+      <div class="row mb-5">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <label >Search</label>
+          <div>
+            <input
+              nz-input
+              placeholder="Search here"
+              nzSize="default"
+              (keyup)="onSearchInputChange($event)"
+            />
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <br>
+          <input
+          type="file"
+          (change)="onFileChange($event)"
+          style="display: none"
+          #fileInput
+        />
+        <a>
+        <button class="button-search" nz-button  nzSize="default" nzType="primary"
+              (click)="fileInput.click()">Uplaod</button>
+        </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <br>
+          <div class="file-details" *ngIf="selectedFile">
+            <div style="margin-left: 10px" class="file-info">
+              {{ selectedFile.name }}
+            </div>
+  
+            <div
+              class="close-icon"
+              (click)="removeFile()"
+            >
+              <a
+                class="btn btn-icon btn-active-color-primary btn-sm me-1"
+                matTooltip="Remove"
+                matTooltipPosition="above"
+              >
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/arrows/arr061.svg'"
+                  class="svg-icon svg-icon-3"
+                ></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" >
+          <br>
+          <a>
+          <button class="button-view" nz-button  nzSize="default" nzType="primary"
+              (click)="downloadExcelFormat()" [nzLoading]="isDownload">Download Excel Format</button>
+        </a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card card-padding">
+      <div style="margin-top: 10px; margin-bottom: 15px;">
+          <div >
+            <nz-table #basicTable nzTableLayout="fixed" [nzData]="excelData"
+            nzSize="small" nzShowPagination="false" nzBordered  nzResponsive>
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Teacher Name</th>
+          <th>Father's Name</th>
+          <th>Joining Date</th>
+          <th>Sms Mobile Number</th>
+         
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let row of excelData; let i=index" >
+          <td>{{i+1}}</td>
+          <td>
+            {{excelData[i].TEACHER_NAME}}
+          </td>
+          <td>
+            {{excelData[i].FATHERS_NAME}}
+          </td>
+          <td>
+            {{excelData[i].JOINING_DATE}}
+          </td>
+          <td>
+            {{excelData[i].SMS_MOBILE_NUM}}
+          </td>
+          
+  
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+      </div>
+  
+      <div class="col-lg-3">
+        <button
+        type="button"
+        class="button-save"
+        nz-button
+        nzType="primary"
+        (click)="prepareSave()"
+        [nzLoading]="isSaveLoading"
+      >
+        Save
+      </button>
+      </div>
+    </div>
+  </form>
+

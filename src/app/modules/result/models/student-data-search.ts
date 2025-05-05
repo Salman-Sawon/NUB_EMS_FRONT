@@ -1,0 +1,34 @@
+export class StudentDataSearch {
+    STUDENT_ID: any;
+    STUDENT_CODE: any;
+    STUDENT_NAME: any;
+    START_SESSION_CODE: string;
+    SESSION_NAME: string;
+    CUR_SESSION_CODE: string;
+    SESSION_NAME_1: string;
+    CAMPUS_CODE: string;
+    CAMPUS_NAME: string;
+    CLASS_CODE: string;
+    CLASS_NAME: string;
+    GROUP_CODE: string;
+    GROUP_NAME: string;
+    SECTION_CODE: string;
+    SECTION_NAME: string;
+    SHIFT_CODE: string;
+    SHIFT_NAME: string;
+    VERSION_CODE: string;
+    VERSION_NAME: string;
+    DATE_OF_BIRTH: any;
+    ADMISSION_DATE: any;
+    CLASS_ROLL: any;
+    FATHERS_NAME: any;
+    FATHER_CONTACT_NO: any;
+    PRESENT_ADDR: any;
+    PERMANENT_ADDR: any;
+    ADMISSION_TEST_MARK: any;
+    ADMISSION_TEST_POS: any;
+    SMS_MOBILE_NUM: any;
+    Link: any;
+    SMS_ID:any;
+    SMS_CONTENT:any;
+}

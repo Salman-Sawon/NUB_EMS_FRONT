@@ -1,0 +1,55 @@
+<form [formGroup]="loginForm">
+  <div class="login-container row">
+    <div class="left-side col-lg-6 col-12">
+    </div>
+    <div class="right-side col-lg-6 col-12">
+      <div class="login-form">
+
+        <!-- <div class="text-center mb-2">
+          <img src="../../../../../assets/media/logos/color-logo.svg" alt="Logo" class="logo">
+        </div>
+        <br> -->
+
+        <h2 class="title-one">Get Started</h2>
+        <div class="text-left">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter user name!">
+              <nz-input-group [nzSuffix]="suffixTemplateMail" nzSize="default">
+                <input type="text" formControlName="USER_NAME" nz-input placeholder="User Name" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <ng-template #suffixTemplateMail>
+            <span nz-icon nzType="user"></span>
+          </ng-template>
+        </div>
+        <div class="text-left">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter password!">
+              <nz-input-group [nzSuffix]="suffixTemplate" nzSize="default">
+                <input formControlName="PASSWORD" [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Password" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <ng-template #suffixTemplate>
+            <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></span>
+          </ng-template>
+        </div>
+        <div>
+          <button nz-button [nzSize]="'default'" (click)="login()" nzType="primary" class="button-save" [nzLoading]="isLoadingCircle">
+            Login
+          </button>
+        </div>
+
+        <div>
+          <p *ngIf="isIncorrectPass" class="incorrect-pass">
+            {{ validationStatus }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!-- <button (click)="requestFCMToken()">Enable Notifications</button> -->

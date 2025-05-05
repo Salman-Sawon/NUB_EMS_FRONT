@@ -1,0 +1,83 @@
+<form nz-form [formGroup]="ValidateForm">
+    <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div nz-col [nzSpan]="24" [nzXs]="{ span: 24 }" [nzSm]="{ span: 24 }" [nzMd]="{ span: 24 }" [nzLg]="{ span: 24 }">
+        <label>Building Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="building is required!">
+            <nz-input-group>
+              <nz-select
+              formControlName="BUILDING_ID"
+            
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select building"
+            >
+            <nz-option *ngFor="let item of buildingList"
+             [nzLabel]="item.BUILDING_NAME" [nzValue]="item.BUILDING_ID"></nz-option>
+
+            </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      </div>
+    <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+
+      <div nz-col [nzSpan]="12" [nzXs]="{ span: 12 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 12 }" [nzLg]="{ span: 12 }">
+        <label >Room Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter room name!">
+            <nz-input-group nzSize="default" >
+              <input formControlName="ROOM_NAME" nz-input placeholder="Enter room name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="12" [nzXs]="{ span: 12 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 12 }" [nzLg]="{ span: 12 }">
+        <label
+          >Capacity<span style="color: red">*</span></label
+        >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter capacity!">
+            <nz-input-group nzSize="default">
+                <input formControlName="CAPACITY" nz-input placeholder="Enter capacity" type="number"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+  </div>
+  <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div nz-col [nzSpan]="12" [nzXs]="{ span: 12 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 12 }" [nzLg]="{ span: 12 }">
+        <label
+          >Number of Rows<span style="color: red">*</span></label
+        >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter number of rows!">
+            <nz-input-group nzSize="default">
+                <input formControlName="NUMBER_OF_ROWS" nz-input placeholder="Enter number of rows" type="number"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="12" [nzXs]="{ span: 12 }" [nzSm]="{ span: 12 }" [nzMd]="{ span: 12 }" [nzLg]="{ span: 12 }">
+        <label
+          >Number of Columns<span style="color: red">*</span></label
+        >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter number of columns!">
+            <nz-input-group nzSize="default">
+                <input formControlName="NUMBER_OF_COLUMNS" nz-input placeholder="Enter number of columns" type="number"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  
+    <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div nz-col [nzSpan]="6" [nzXs]="{ span: 6 }" [nzSm]="{ span: 6 }" [nzMd]="{ span: 6 }" [nzLg]="{ span: 6 }">
+        <button class="modal-button-save" nz-button nzType="primary" (click)="saveRoom()"
+        [nzLoading]="isSaveLoading">{{btnUpdateSave}}</button>
+      </div>
+    </div>
+  </form>
+  

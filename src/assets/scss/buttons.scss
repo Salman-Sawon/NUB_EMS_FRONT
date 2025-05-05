@@ -1,0 +1,157 @@
+@import '../styles/variable';
+.button-save {
+  color: #fff;
+  font-weight: 600 !important;
+  border-color: $save-btn !important;
+  border: 1px solid transparent !important;
+  background: $save-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-save:hover {
+  background-color: $save-btn-hover !important;
+  border-color: $save-btn-hover !important;
+}
+
+.modal-button-save {
+  color: #fff;
+  font-weight: 600 !important;
+  border-color: $save-btn !important;
+  border: 1px solid transparent !important;
+  background: $save-btn !important;
+  width: 100%;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.modal-button-save:hover {
+  background-color: $save-btn-hover !important;
+  border-color: $save-btn-hover !important;
+}
+
+.button-search {
+  color: #fff;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-color: $search-btn !important;
+  border: 1px solid transparent !important;
+  background: $search-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-search:hover {
+  background-color: $search-btn-hover !important;
+  border-color: $search-btn-hover !important;
+}
+
+.button-view {
+  color: #fff;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-color: $view-btn !important;
+  border: 1px solid transparent !important;
+  background: $view-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-view:hover {
+  background-color: $view-btn-hover !important;
+  border-color: $view-btn-hover !important;
+}
+
+.button-report {
+  color: #fff;
+  font-weight: 600 !important;
+  border-color: $report-btn !important;
+  border: 1px solid transparent !important;
+  background: $report-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-report:hover {
+  background-color: $report-btn-hover !important;
+  border-color: $report-btn-hover !important;
+}
+
+
+.button-delete {
+  color: #fff;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-color: $delete-btn !important;
+  border: 1px solid transparent !important;
+  background: $delete-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-delete:hover {
+  background-color: $delete-btn-hover !important;
+  border-color: $delete-btn-hover !important;
+}
+
+
+.button-edit {
+  color: #fff;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-color: $edit-btn !important;
+  border: 1px solid transparent !important;
+  background: $edit-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-edit:hover {
+  background-color: $edit-btn-hover !important;
+  border-color: $edit-btn-hover !important;
+}
+
+
+.button-add {
+  color: #fff;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-color: $add-btn !important;
+  border: 1px solid transparent !important;
+  background: $add-btn !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+}
+.button-add:hover {
+  background-color: $add-btn-hover !important;
+  border-color: $add-btn-hover !important;
+}
+
+
+.button-right
+{
+  text-align: right !important;
+}
+
+
+.text-center
+{
+  text-align: center !important;
+}
+
+.ant-input-group {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  display: flex; /* Replace table layout with flexbox */
+  width: 100%;
+  flex-wrap: nowrap; /* Keep the elements in a single row */
+}

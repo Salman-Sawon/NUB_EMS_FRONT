@@ -1,0 +1,27 @@
+
+
+
+
+.truncate-select .ant-select-selection-item {
+    white-space: nowrap;     /* Prevent text wrapping */
+    overflow: hidden;        /* Hide overflowed content */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+  }
+  
+  .truncate-select .ant-select-selection-search-input {
+    max-width: 80%;         /* Ensure input search doesn't overflow */
+  }
+  
+  label {
+   // font-weight: bold;
+    display: block;
+  }
+  
+  .required-asterisk {
+    color: red;
+  }
+
+
+  .ant-select-selector{
+width: 80% !important;
+  }

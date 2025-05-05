@@ -1,0 +1,19 @@
+$save-btn :#008E44;
+$save-btn-hover :#08A754;
+$search-btn :#F58232;
+$search-btn-hover :#f89b5d;
+$view-btn :#4335EA;
+$view-btn-hover :#6355fc;
+$report-btn :#5D23A8;
+$report-btn-hover :#7640bb;
+$delete-btn :#EB3237;
+$delete-btn-hover :#f1565b;
+$edit-btn :#07A9CC;
+$edit-btn-hover :#2db6d5;
+$add-btn :#1DA04A;
+$add-btn-hover :#41b568;
+
+.read-only-select {
+    cursor: not-allowed;
+    pointer-events: none; 
+  }

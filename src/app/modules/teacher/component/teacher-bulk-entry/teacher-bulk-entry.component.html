@@ -1,0 +1,71 @@
+<form nz-form [formGroup]="validateForm">
+   
+    <div class="card card-padding">
+      <div class="col-lg-2"  >
+        <button  class="button-report"
+        nz-button nzType="primary" (click)="report()"
+        >Active Teacher List</button>
+      </div>
+      <div class="button-right">
+        <div>
+          <button class="button-add" nz-button nzShape="round" nzType="primary" nzSize="default" (click)="Add()">Add</button>
+        </div>
+      </div>
+      <div style="margin-top: 10px; margin-bottom: 15px;">
+          <div >
+          <nz-table #basicTable nzTableLayout="fixed" [nzData]="teacherFormArray.value"
+          nzSize="small" nzShowPagination="false" nzBordered  nzResponsive>
+      <thead>
+        <tr>
+          <th style="width: 40px;">No</th>
+          <th>Teacher Name</th>
+          <th>Father's Name</th>
+          <th>Joining Date</th>
+          <th>Sms Mobile Number</th>
+          <th style="width: 100px;text-align: center;">Action</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="teacherFormArray">
+        <tr *ngFor="let row of teacherFormArray.controls; let i=index" [formGroupName]="i">
+          <td>{{i+1}}</td>
+          <td>
+            <input nz-input formControlName="TEACHER_NAME"/>
+          </td>
+         
+          <td>
+            <input nz-input formControlName="FATHERS_NAME"/>
+          </td>
+          <td>
+            <nz-date-picker formControlName="JOINING_DATE" nzFormat="dd/MM/yyyy"
+            ></nz-date-picker>
+          </td>
+          <td>
+            <input nz-input formControlName="SMS_MOBILE_NUM" (keypress)="numberOnly($event)" />
+          </td>
+        
+          <td style="text-align: center;">
+            <a>
+              <button class="button-delete" nz-button nzShape="round" nzSize="small" nzType="primary"
+              (click)="delete(i)">Delete</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+      </div>
+  
+      <div class="col-lg-3">
+        <button
+        type="button"
+        class="button-save"
+        nz-button
+        nzType="primary"
+        (click)="prepareSave()"
+        [nzLoading]="isSaveLoading"
+      >
+        Save
+      </button>
+      </div>
+    </div>
+  </form>

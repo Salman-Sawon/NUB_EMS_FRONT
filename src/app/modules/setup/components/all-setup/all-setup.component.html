@@ -1,0 +1,284 @@
+<form [formGroup]="setUpForm">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-lg-6">
+          <label>Setup Option</label>
+          <div>
+            <nz-select nzAllowClear formControlName="SETUP_OPTION" (ngModelChange)="LoadDataList($event)"
+              nzPlaceHolder="Select setup option" [nzCustomTemplate]="defaultTemplate" nzSize="default">
+              <nz-option *ngFor="let item of commonTableInfoList" [nzLabel]="item.SET_UP_NAME" [nzValue]="item.ID"></nz-option>
+            </nz-select>
+            <ng-template #defaultTemplate let-selected>
+              {{ selected.nzLabel }}
+            </ng-template>
+            <div>
+              <small class="text-danger"
+                *ngIf="(commonFormControl.SETUP_OPTION.touched || submitted) && commonFormControl.SETUP_OPTION.errors?.required">
+                Setup option is required
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3" style="margin-top: 21px; text-align: right" *ngIf="addDynamicBtnShow">
+         
+          <button class="button-add" style="margin-top: 20px;"
+          nz-button nzType="primary" 
+          (click)="addNew()"
+          >{{addDynamicBtn}}</button>
+        </div>
+      </div>
+  
+      <nz-table
+      #basicTable
+      [nzPageSize]="100"
+      [nzData]="tableDataList"
+      nzSize="small"
+      nzBordered nzResponsive
+    >
+    <thead>
+      <tr>
+        <th *ngIf="IS_SHOW_NO">No</th>
+        <th *ngIf="IS_SHOW_VALUE_1">{{VALUE_1}}</th>
+        <th *ngIf="IS_SHOW_VALUE_2">{{VALUE_2}}</th>
+        <th *ngIf="IS_SHOW_VALUE_3">{{VALUE_3}}</th>
+        <th *ngIf="IS_SHOW_VALUE_4">{{VALUE_4}}</th>
+        <th *ngIf="IS_SHOW_VALUE_5">{{VALUE_5}}</th>
+        <th *ngIf="IS_SHOW_VALUE_6">{{VALUE_6}}</th>
+        <th *ngIf="IS_SHOW_VALUE_7">{{VALUE_7}}</th>
+        <th *ngIf="IS_SHOW_VALUE_8">{{VALUE_8}}</th>
+        <th *ngIf="IS_SHOW_VALUE_9">{{VALUE_9}}</th>
+        <th *ngIf="IS_SHOW_ACTION" style="text-align: right;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td *ngIf="IS_SHOW_NO">{{ i+1 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_1">{{ data.VALUE_1 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_2">{{ data.VALUE_2 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_3">{{ data.VALUE_3 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_4">{{ data.VALUE_4 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_5">{{ data.VALUE_5 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_6">{{ data.VALUE_6 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_7">{{ data.VALUE_7 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_8">{{ data.VALUE_8 }}</td>
+        <td *ngIf="IS_SHOW_VALUE_9">{{ data.VALUE_9 }}</td>
+        <td *ngIf="IS_SHOW_ACTION" style="text-align: right;">
+         
+          <button class="button-edit"  nzSize="small"
+          nz-button nzType="primary" nzShape="round"
+          (click)="edit(data)"
+          >Edit</button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button class="button-delete" nzShape="round"
+          nz-button nzType="primary" nzSize="small"
+          (click)="delete(data)"
+          >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
+    </div>
+  </form>
+  
+  
+  <form  [formGroup]="validateForm" >
+  <nz-modal [(nzVisible)]="isVisible" [nzTitle]="addDynamicTitle"  (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkText]="btnDialog">
+    <ng-container *nzModalContent>
+      <div >
+        <div *ngIf="IS_SHOW_VALUE_1_MODAL">
+          <label class="custom-label"
+            >{{VALUE_1_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_1_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <input
+                  nz-input
+                  [placeholder]="VALUE_1_PLACEHOLDER"
+                  formControlName = "VALUE_1"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div *ngIf="IS_SHOW_VALUE_3_MODAL">
+          <label class="custom-label"
+            >{{VALUE_3_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_3_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <input
+                  nz-input
+                  [placeholder]="VALUE_3_PLACEHOLDER"
+                  formControlName = "VALUE_3"
+  
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div *ngIf="IS_SHOW_VALUE_4_MODAL">
+          <label class="custom-label"
+            >{{VALUE_4_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_4_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <input
+                  nz-input
+                  [placeholder]="VALUE_4_PLACEHOLDER"
+                  formControlName = "VALUE_4"
+  
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div *ngIf="IS_SHOW_VALUE_5_MODAL">
+          <label class="custom-label"
+            >{{VALUE_5_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_5_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <nz-select
+                    nzAllowClear
+                    nzShowSearch
+                    formControlName="VALUE_5"
+                    [nzPlaceHolder]="VALUE_5_PLACEHOLDER"
+                    [nzCustomTemplate]="defaultTemplate"
+                    nzSize="large"
+                  >
+                    <nz-option
+                      *ngFor="let item of value_5_List"
+                      [nzLabel]="item.NAME"
+                      [nzValue]="item.CODE"
+                    ></nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    {{ selected.nzLabel }}
+                  </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div *ngIf="IS_SHOW_VALUE_10_MODAL">
+          <label class="custom-label"
+            >{{VALUE_10_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_10_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <nz-select
+                    nzAllowClear
+                    nzShowSearch
+                    formControlName="VALUE_10"
+                    (ngModelChange)="OnKeySelection($event)"
+                    [nzPlaceHolder]="VALUE_10_PLACEHOLDER"
+                    [nzCustomTemplate]="defaultTemplate"
+                    nzSize="large"
+                  >
+                    <nz-option nzLabel="Section" nzValue="SECTION" ></nz-option>
+                    <nz-option nzLabel="Version" nzValue="VERSION" ></nz-option>
+                    <nz-option nzLabel="Year" nzValue="YEAR" ></nz-option>
+                    <nz-option nzLabel="Semester" nzValue="SEMESTER" ></nz-option>
+                    <nz-option nzLabel="Shift" nzValue="SHIFT" ></nz-option>
+                    <nz-option nzLabel="Group" nzValue="GROUP" ></nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    {{ selected.nzLabel }}
+                  </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+        <div *ngIf="IS_SHOW_VALUE_6_MODAL">
+          <label class="custom-label"
+            >{{VALUE_6_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_6_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <nz-select
+                    nzAllowClear
+                    nzShowSearch
+                    formControlName="VALUE_6"
+                    [nzPlaceHolder]="VALUE_6_PLACEHOLDER"
+                    [nzCustomTemplate]="defaultTemplate"
+                    nzSize="large"
+                  >
+                    <nz-option
+                      *ngFor="let item of classList"
+                      [nzLabel]="item.CLASS_NAME"
+                      [nzValue]="item.CLASS_CODE"
+                    ></nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    {{ selected.nzLabel }}
+                  </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div *ngIf="IS_SHOW_VALUE_7_MODAL">
+          <label class="custom-label"
+            >{{VALUE_7_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control nzErrorTip="VALUE_7_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <input
+                  nz-input
+                  [placeholder]="VALUE_7_PLACEHOLDER"
+                  formControlName = "VALUE_7"
+                  (keypress)="numberOnly($event)"
+                  maxlength="2"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+  
+        <div *ngIf="IS_SHOW_VALUE_9_MODAL">
+          <label class="custom-label"
+            >{{VALUE_9_LABEL}}<span style="color: red">*</span></label
+          >
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="VALUE_9_ERRORTEXT">
+              <nz-input-group nzSize="large">
+                <nz-select
+                    nzAllowClear
+                    nzShowSearch
+                    formControlName="VALUE_9"
+                    [nzPlaceHolder]="VALUE_9_PLACEHOLDER"
+                    [nzCustomTemplate]="defaultTemplate"
+                    nzSize="large"
+                  >
+                    <nz-option nzLabel="Yes" nzValue="Y" ></nz-option>
+                    <nz-option nzLabel="No" nzValue="N" ></nz-option>
+                  </nz-select>
+                  <ng-template #defaultTemplate let-selected>
+                    {{ selected.nzLabel }}
+                  </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+      </div>
+    </ng-container>
+  </nz-modal>
+  </form>
+  

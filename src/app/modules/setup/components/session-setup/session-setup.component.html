@@ -1,0 +1,129 @@
+<form nz-form [formGroup]="validateForm">
+  <div class="card card-padding">
+  <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div nz-col [nzSpan]="6" [nzXs]="{ span: 6 }" [nzSm]="{ span: 6 }" [nzMd]="{ span: 6 }" [nzLg]="{ span: 6 }">
+        <label>Session Name<span style="color: red">*</span></label>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please select session!">
+            <nz-input-group nzSize="large">
+              <nz-select
+                nzAllowClear
+                nzShowSearch
+                (ngModelChange)="slectedSession($event);"
+                formControlName="SESSION_ID"
+                nzPlaceHolder="Select session"
+                nzSize="default"
+              >
+              <nz-option *ngFor="let item of sessionList" [nzLabel]="item.SESSION_NAME" [nzValue]="item.SESSION_CODE"></nz-option>
+              </nz-select>
+             
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+        <div nz-col [nzSpan]="6" [nzXs]="{ span: 6 }" [nzSm]="{ span: 6 }" [nzMd]="{ span: 6 }" [nzLg]="{ span: 6 }">
+          <label>Session Name<span style="color: red">*</span></label>
+          <nz-form-item>
+              <nz-form-control nzErrorTip="Please enter session name!">
+                <nz-input-group nzSize="default" >
+                  <input formControlName="SESSION_NAME" 
+                  nz-input placeholder="Enter session name" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6" [nzXs]="{ span: 6 }" [nzSm]="{ span: 6 }" [nzMd]="{ span: 6 }" [nzLg]="{ span: 6 }">
+          <label>Session Name Bangla</label>
+          <nz-form-item>
+              <nz-form-control >
+                <nz-input-group nzSize="default" >
+                  <input formControlName="SESSION_NAME_BANGLA" 
+                  nz-input placeholder="Session name bangla" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="4" [nzXs]="{ span: 4 }" [nzSm]="{ span: 4 }" [nzMd]="{ span: 4 }" [nzLg]="{ span: 4 }">
+          <label>Session Start Date<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please select session start date!">
+              <nz-input-group nzSize="default">
+                <nz-date-picker
+                formControlName = "START_DATE"
+                  [nzFormat]="'dd/MM/yyyy'"
+                  nzPlaceHolder="dd/mm/yyyy"
+                  nzSize="default"
+                  readonly="true"
+                ></nz-date-picker>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="4" [nzXs]="{ span: 4 }" [nzSm]="{ span: 4 }" [nzMd]="{ span: 4 }" [nzLg]="{ span: 4 }">
+          <label>Session End Date<span style="color: red">*</span></label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please select session end date!" >
+              <nz-input-group nzSize="default">
+                <nz-date-picker
+                formControlName = "END_DATE"
+                  [nzFormat]="'dd/MM/yyyy'"
+                  nzPlaceHolder="dd/mm/yyyy"
+                  nzSize="default"
+                  readonly="true"
+                ></nz-date-picker>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="4" [nzXs]="{ span: 4 }" [nzSm]="{ span: 4 }" [nzMd]="{ span: 4 }" [nzLg]="{ span: 4 }" *ngIf="generateButtonHide" >
+            <button class="button-save" style="margin-top: 20px;"
+            nz-button nzType="primary" 
+            (click)="generateBillMonth()"
+            [nzLoading]="isSaveLoading">{{generateButton}}</button>
+          </div>
+      </div>
+    </div>
+     
+
+    <div class=" card card-padding">
+      <nz-table #basicTable nzTableLayout="fixed" [nzData]="sessionFormArray.value"
+      nzSize="small" nzShowPagination="false" nzBordered nzResponsive>
+      <thead>
+        <tr>
+          <th>Bill Month</th>
+          <th>Bill Month Start Date</th>
+          <th>Bill Month End Date</th>
+          <th>Bill Date</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="sessionFormArray">
+        <tr *ngFor="let row of sessionFormArray.controls; let i = index" [formGroupName]="i">
+          <td>{{ row.get('billMonth')?.value }}</td>
+          <td>{{ row.get('startDate')?.value }}</td>
+          <td>{{ row.get('endDate')?.value }}</td>
+          <td>{{ row.get('billDate')?.value }}</td>
+          <td>{{ row.get('dueDate')?.value }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+    <div nz-row class="mt-5" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+        <div nz-col [nzSpan]="3" [nzXs]="{ span: 3 }" [nzSm]="{ span: 3 }" [nzMd]="{ span: 3 }" [nzLg]="{ span: 3 }">
+            <button class="button-save" style="margin-top: 20px;"
+            nz-button nzType="primary" 
+            (click)="saveSession()"
+            [nzLoading]="isSaveLoading">{{changeButton}}</button>
+        </div>
+      
+      </div>
+    
+  </form>
+  
+
+      
+    
