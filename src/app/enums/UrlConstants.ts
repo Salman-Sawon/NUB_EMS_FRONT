@@ -443,8 +443,8 @@ getExamRoutineListForNotification: "notification/ExamRoutineNotification",
 
     //Result New
     saveSubjectInfo: 'SubjectInfo/SaveSubjectInfo',
-    subjectCreation: 'SubjectInfo/SaveSubjectCreation',
-    getSubject: 'SubjectInfo/GetResultSubjectList',
+    subjectCreation: 'teacher/SaveSubjectCreation',
+    getSubject: 'teacher/GetResultSubjectList',
     getSubjectTemplateList: "SubjectInfo/GetSubjectTemplateGridList",
     subjectTemplateList: "SubjectInfo/SubjectTemplateList",
     subjectTemplateAssign: "SubjectInfo/SubjectTemplateAssign",
