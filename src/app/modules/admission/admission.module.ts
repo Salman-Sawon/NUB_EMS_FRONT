@@ -29,11 +29,13 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { StudentListReportComponent } from './components/offline/student-list-report/student-list-report.component';
 
 @NgModule({
   declarations: [
     BulkEntryComponent,
     QuickEntryComponent,
+    StudentListReportComponent
   ],
   imports: [
     CommonModule,

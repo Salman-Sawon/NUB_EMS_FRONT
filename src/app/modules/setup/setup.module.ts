@@ -21,8 +21,6 @@ import { SessionSetupComponent } from './components/session-setup/session-setup.
 import { AllSetupComponent } from './components/all-setup/all-setup.component';
 import { ClassRoomEntryComponent } from './components/class-room-entry/class-room-entry.component';
 import { AddRoomEntryComponent } from './components/class-room-entry/add-room-entry/add-room-entry.component';
-import { PeriodEntryComponent } from './components/period-entry/period-entry.component';
-import { AddPeriodEntryComponent } from './components/period-entry/add-period-entry/add-period-entry.component';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { SubjectEntryComponent } from './components/subject-entry/subject-entry.component';
 @NgModule({
@@ -32,8 +30,6 @@ import { SubjectEntryComponent } from './components/subject-entry/subject-entry.
     AllSetupComponent,
     ClassRoomEntryComponent,
     AddRoomEntryComponent,
-    PeriodEntryComponent,
-    AddPeriodEntryComponent,
     SubjectEntryComponent,
     
   ],

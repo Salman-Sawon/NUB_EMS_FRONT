@@ -9,9 +9,9 @@ import { Subject, takeUntil } from 'rxjs';
 import { StudentBulkEntryService } from '../../../services/student-bulk-entry.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { GlobalService } from 'src/app/shared-services/Global_Services/global.service';
-import { StudentSubjectMappingService } from 'src/app/shared-services/Global_Services/student-subject-mapping.service';
 import { DatePipe } from '@angular/common';
 import * as XLSX from 'xlsx';
+import { StudentSubjectMappingService } from 'src/app/shared-services/Global_Services/student-subject-mapping.service';
 
 @Component({
   selector: 'app-bulk-entry',

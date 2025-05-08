@@ -93,12 +93,7 @@ export class GlobalService {
 
 
 
-  getTermDDL(ORG_CODE: string, SUB_MAP_ID: number) {
-    let params = new HttpParams();
-    params = params.set('ORG_CODE', ORG_CODE);
-    params = params.set('SUB_MAP_ID', SUB_MAP_ID);
-    return this.httpClient.get(UrlConstants.getTermDDL, {params: params});
-  }
+
 
 
   getSmstypeList() {
@@ -420,71 +415,6 @@ export class GlobalService {
 
 
 
-  // get student list with version, class, session and so on
-  getExceptionStudentList(organizationCode: string, studentCode: string) {
-    let params = new HttpParams();
-    params = params.set('organizationCode', organizationCode);
-    params = params.set('studentCode', studentCode);
-    return this.httpClient.get(UrlConstants.feeExceptionStudentList, {params: params});
-  }
-
-  // Get Fee Bill Suspense List
-  getFeeBillSuspenseList(organizationCode: string, studentCode: string, userCode: string) {
-    let params = new HttpParams();
-    params = params.set('organizationCode', organizationCode);
-    params = params.set('studentCode', studentCode);
-    params = params.set('userCode', userCode);
-    return this.httpClient.get(UrlConstants.getFeeSuspenseList, {params: params});
-  }
-
-  // Get Fee Bill Total List
-  getFeeBillTotalList(organizationCode: string, studentCode: string, userCode: string) {
-    let params = new HttpParams();
-    params = params.set('organizationCode', organizationCode);
-    params = params.set('studentCode', studentCode);
-    params = params.set('userCode', userCode);
-    return this.httpClient.get(UrlConstants.getFeeBillTotalList, {params: params});
-  }
-
-  // Get Exam List
-  GetExamList(value: string): Observable<any> {
-    let params = new HttpParams().set('organizationCode', value)
-    return this.httpClient.get(UrlConstants.getExamList,{ params: params });
-  }
-
-  // Get Exam List
-  getBankBranchListByBankCode(bankCode: string): Observable<any> {
-    let params = new HttpParams().set('bankCode', bankCode)
-    return this.httpClient.get(UrlConstants.getBankBranchListByBankCode, { params: params });
-  }
-
-  // get manual id
-  getManualId(userName: any): Observable<any> {
-    let params = new HttpParams().set('userName', userName);
-    return this.httpClient.get(UrlConstants.getManualId, { params: params });
-  }
-  getCollectionId(userName: any): Observable<any> {
-    let params = new HttpParams().set('userName', userName);
-    return this.httpClient.get(UrlConstants.getCollectionId, { params: params });
-  }
-
-  getVoucherNO(userName: any): Observable<any> {
-    let params = new HttpParams().set('userName', userName);
-    return this.httpClient.get(UrlConstants.getVoucherNO, { params: params });
-  }
-
-  GetVoucherNO_UNIQ(userName: any): Observable<any> {
-    let params = new HttpParams().set('userName', userName);
-    return this.httpClient.get(UrlConstants.GetVoucherNO_UNIQ, { params: params });
-  }
-  // Get Session Start End Month Voucher List
-  getSessionStartEndMonVuList(sessionCode: string, organizationCOde: string, userCode:any): Observable<any> {
-    let params = new HttpParams();
-    params = params.set('sessionCode', sessionCode)
-    params = params.set('organizationCode', organizationCOde)
-    params = params.set('userCode', userCode)
-    return this.httpClient.get(UrlConstants.getSessionSrtEndMonthVoucherList,{ params: params });
-  }
 
   setMessage(data:any) {
     this.message = data;
@@ -500,11 +430,6 @@ export class GlobalService {
   }
 
 
-  getBoardPrevExamList(value: string): Observable<any> {
-    let params = new HttpParams().set('organizationCode', value)
-    return this.httpClient.get(UrlConstants.getBoardPrevExamList,{ params: params });
-  }
-
   getVisibilityListByClassCode(classCode:string){
 
     let dataList = [];
@@ -518,21 +443,7 @@ export class GlobalService {
     return dataList;
   }
 
-  getVisibilityListByClassCodemultipram(classCode: string[]) {
-
-    let dataList = [];
-    dataList = JSON.parse(localStorage.getItem('visibility')!);
-
-    if (dataList !== null) {
-      if (dataList.length > 0) {
-        // Use includes to check if w.ID is in the classCode array
-        dataList = dataList.filter((w: any) => classCode.includes(w.ID));
-      }
-    }
-
-    return dataList;
-  }
-
+  
 
 
 
@@ -565,86 +476,5 @@ export class GlobalService {
 
   }
 
-  getClassDDL(ORG_CODE: string, CAMPUS_CODE: string, USER_CODE: string) {
-    let params = new HttpParams();
-    params = params.set('ORG_CODE', ORG_CODE);
-    params = params.set('CAMPUS_CODE', CAMPUS_CODE);
-    params = params.set('USER_CODE', USER_CODE);
-    return this.httpClient.get(UrlConstants.getClassDDL, {params: params});
-  }
 
-  getBatchDDL(ORG_CODE: string, CAMPUS_CODE: string, CLASS_CODE:string, USER_CODE: string) {
-    let params = new HttpParams();
-    params = params.set('ORG_CODE', ORG_CODE);
-    params = params.set('CAMPUS_CODE', CAMPUS_CODE);
-    params = params.set('CLASS_CODE', CLASS_CODE);
-    params = params.set('USER_CODE', USER_CODE);
-    return this.httpClient.get(UrlConstants.getBatchDDL, {params: params});
-  }
-
-  // getStudentAttendanceData(student: StudentAttendenceVM) {
-  //   let params = new HttpParams();
-  //   params = params.set('ORG_CODE', student.ORG_CODE);
-  //   params = params.set('CAMPUS_CODE', student.CAMPUS_CODE);
-  //   params = params.set('SUB_MAP_ID', student.BATCH_CODE.toString());
-  //   params = params.set('ATTENDANCE_DATE', student.DATE);
-  //   params = params.set('USER_CODE', student.USER_CODE);
-  //   return this.httpClient.get(UrlConstants.getStudentAttendanceData, {params: params});
-  // }
-
-
-
-  // getComboSerialist(ORG_CODE : string, CAMPUS_CODE: string) {
-  //   let params = new HttpParams();
-  //   params = params.set('ORG_CODE', ORG_CODE);
-  //   params = params.set('CAMPUS_CODE', CAMPUS_CODE);
-  //   return this.httpClient.get(UrlConstants.getComboSerialList, {params: params});
-  // }
-
-  getComboSerialist(ORG_CODE : string, CAMPUS_CODE: string) {
-    let params = new HttpParams();
-    params = params.set('ORG_CODE', ORG_CODE);
-    params = params.set('CAMPUS_CODE', CAMPUS_CODE);
-    this.httpClient.get(UrlConstants.getComboSerialList, {params: params})
-                  .pipe(takeUntil(this.ngUnsubscribe))
-                  .subscribe((res:any) => {
-                   let dataList = [];
-                    dataList = res.ResponseObj;
-                    if(dataList.length>0)
-                        {
-                          localStorage.setItem('ComboSerialList', JSON.stringify(dataList));
-                        }
-    });
-  }
-//   getTermDDL(ORG_CODE: string, SUB_MAP_ID: number) {
-//     let params = new HttpParams();
-//     params = params.set('ORG_CODE', ORG_CODE);
-//     params = params.set('SUB_MAP_ID', SUB_MAP_ID);
-//     return this.httpClient.get(UrlConstants.getTermDDL, {params: params});
-//   }
-
-getPaySlipStudentInfo(organizationCode: string,campusCode:string, studentCode: string, status: number) {
-  let params = new HttpParams();
-  params = params.set('organizationCode', organizationCode);
-  params = params.set('campusCode', campusCode);
-  params = params.set('studentCode', studentCode);
-  params = params.set('STATUS', status);
-  return this.httpClient.get(UrlConstants.paySlipStdInfo, {params: params});
-}
-
-payCollSlipStdInfo(organizationCode: string, campusCode: string,studentCode: string, status: number, userCode: string){
-  let params = new HttpParams();
-  params = params.set('organizationCode', organizationCode);
-  params = params.set('campusCode', campusCode);
-  params = params.set('studentCode', studentCode);
-  params = params.set('STATUS', status);
-  params = params.set('userCode', userCode);
-  return this.httpClient.get(UrlConstants.payCollSlipStdInfo, {params: params});
-}
-
-getCollInfo(collectionId: string) {
-  let params = new HttpParams();
-  params = params.set('collectionId', collectionId);
-  return this.httpClient.get(UrlConstants.stdBankCollInfo, {params: params});
-}
 }

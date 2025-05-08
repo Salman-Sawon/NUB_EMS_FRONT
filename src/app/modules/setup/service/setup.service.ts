@@ -83,62 +83,10 @@ SaveRoomentry(roomInfo:RoomInfo){
   return this.httpClient.post(UrlConstants.saveRoom, roomInfo);
 }
 
-SaveBuildingEntry(buildingInfo:BuildingInfo){
-  return this.httpClient.post(UrlConstants.campusBuildingMst, buildingInfo);
-}
 
-getPeriodGrid(ORG_CODE: string,CAMPUS_CODE:string) {
-  let params = new HttpParams();
-  params = params.set('ORG_CODE', ORG_CODE);
-  params = params.set('CAMPUS_CODE', CAMPUS_CODE);
-  return this.httpClient.get(UrlConstants.GetPeriodGrid, { params: params });
-}
-SavePeriodentry(periodinfo: Periodinfo) {
-  // const formData = new FormData();
-  // formData.append("PERIOD_ID", periodinfo.PERIOD_ID.toString());
-  // formData.append("ORG_CODE", periodinfo.ORG_CODE);
-  // formData.append("CAMPUS_CODE", periodinfo.CAMPUS_CODE);
-  // formData.append("PERIOD_NAME", periodinfo.PERIOD_NAME);
-  // formData.append("START_TIME", periodinfo.START_TIME  );
-  // formData.append("END_TIME", periodinfo.END_TIME );
-  // formData.append("DURATION", periodinfo.DURATION);
-  // formData.append("USER_CODE", periodinfo.USER_CODE);
-  // formData.append("ROW_STATUS", periodinfo.ROW_STATUS.toString());
 
-  return this.httpClient.post(UrlConstants.SaveClassRoutinePeriod, periodinfo);
-}
 
-getHolidaysGridList( organizationCode: string, sessionCode: string): Observable<any> {
-  let params = new HttpParams();
-  // alert(TERM_ID);
-  params = params.set('ORG_CODE', organizationCode);
-  params = params.set('SESSION_CODE', sessionCode);
- 
-  return this.httpClient.get(UrlConstants.Holidaysgrid, { params: params});
-}
 
-saveHolidaysEntry(holidaysEntry:HolidaysEntry  ) {
-  const formData = new FormData();
-  formData.append('ORG_CODE', holidaysEntry.ORG_CODE);
- 
-
-  const holidaytype = holidaysEntry.HOLIDAY_TYPE;
-  for (let i = 0; i < holidaytype.length; i++) {
-    formData.append('HOLIDAY_TYPE', holidaytype[i]);
-  }
-  const holidaydate = holidaysEntry.HOLIDAY_DATE;
-  for (let i = 0; i < holidaydate.length; i++) {
-    formData.append('HOLIDAY_DATE', holidaydate[i]);
-  }
-  const sessioncode = holidaysEntry.SESSION_CODE;
-  for (let i = 0; i < sessioncode.length; i++) {
-    formData.append('SESSION_CODE', sessioncode[i]);
-  }
-  
-  
-  return this.httpClient.post(UrlConstants.SaveHolidaysEntry, formData);
-  
-}
 
 GetSubjectList(value: string): Observable<any> {
   let params = new HttpParams().set('organizationCode', value)

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UrlConstants } from 'src/app/enums/UrlConstants';
-import { RequestMessage } from 'src/app/models/request-message';
+import { RequestMessage } from 'src/app/modules/result/models/request-message';
 
 @Injectable({
   providedIn: 'root'
